@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: my-app
+  namespace: argocd
+spec:
+  project: default
+  source: # The source of the application manifests
+    repoURL: https://gitlab.com/houssinedahmane/todo_app_with_k8s.git
+    targetRevision: infra # The branch, tag, or commit to sync the application to
+    path: infra/k8s/noteapp/
+  destination: # The destination cluster and namespace to deploy the application
+    server: https://kubernetes.default.svc
+    namespace: apps
+  syncPolicy: # Automatically sync the application
+    syncOptions: # Automatically create the namespace if it does not exist
+    - CreateNamespace=true
+    automated:
+      prune: true # Automatically delete resources that are not in Git
+      selfHeal: true # Automatically create resources that are not in Git

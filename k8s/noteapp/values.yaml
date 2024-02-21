@@ -1,0 +1,14 @@
+# Database settings
+database:
+  size: 50Gi
+  password: 'password'
+  persistence:
+    storageClass: 
+    nodeAffinity: 
+      required:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: kubernetes.io/hostname
+            operator: In
+            values:
+            - "docker-desktop"
