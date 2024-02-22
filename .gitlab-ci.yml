@@ -4,5 +4,5 @@ deploy:
     entrypoint: ['']
   script:
     - kubectl config get-contexts
-    - kubectl config use-context path/to/agent/project:agent-name
+    - kubectl config use-context path/to/agent/project:todo-agent-k8s
     - kubectl get pods
