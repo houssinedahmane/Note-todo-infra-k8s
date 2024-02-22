@@ -1,0 +1,8 @@
+deploy:
+  image:
+    name: bitnami/kubectl:latest
+    entrypoint: ['']
+  script:
+    - kubectl config get-contexts
+    - kubectl config use-context path/to/agent/project:agent-name
+    - kubectl get pods
