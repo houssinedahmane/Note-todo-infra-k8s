@@ -1,0 +1,22 @@
+grafana:
+  enabled: true
+  adminPassword: admin
+  assertNoLeakedSecrets: false
+  grafana.ini:
+    server:
+      root_url: http://localhost:3000/
+    auth.generic_oauth:
+      enabled: true
+      name: Keycloak
+      allow_sign_up: true
+      client_id: grafana
+      scopes: openid profile groups email
+      auth_url: http://192.168.49.2:30080/realms/master/protocol/openid-connect/auth
+      token_url: http://192.168.49.2:30080/realms/master/protocol/openid-connect/token
+      api_url: http://192.168.49.2:30080/realms/master/protocol/openid-connect/userinfo
+      redirect_uri: http://localhost:3000/*
+      client_secret: grafana-client-secret
+      groups_attribute_path: groups
+      role_attribute_path: contains(groups[*], 'grafana-admin') && 'Admin' || contains(groups[*], 'grafana-dev') && 'Editor' || 'Viewer'
+    auth:
+      oauth_allow_insecure_email_lookup: true

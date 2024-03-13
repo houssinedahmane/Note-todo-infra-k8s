@@ -1,0 +1,30 @@
+config:
+  modules:
+    http_2xx:
+      prober: http
+      timeout: 5s
+      http:
+        method: GET
+        valid_status_codes: [200, 201]
+        valid_http_versions: ["HTTP/1.1", "HTTP/2.0"]
+        follow_redirects: true
+        preferred_ip_protocol: "ip4"
+    tcp_connect:
+      prober: tcp
+
+serviceMonitor:
+  enabled: true
+  defaults:
+    labels:
+      release: kube-prometheus-stack
+  targets:
+    - name: backend-service
+      url: backend-service.apps.svc.cluster.local:3001/api/todos
+    - name: frontend-service
+      url: frontend-service.apps.svc.cluster.local:3000
+    - name: postgres-service
+      url: postgres-service.apps.svc.cluster.local:5432 
+      module: tcp_connect
+      
+
+

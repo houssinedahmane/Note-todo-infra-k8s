@@ -1,8 +1,0 @@
-deploy:
-  image:
-    name: bitnami/kubectl:latest
-    entrypoint: ['']
-  script:
-    - kubectl config get-contexts
-    - kubectl config use-context houssinedahmane/noteapp-infra-k8s:todo-agent-k8s 
-    - kubectl get pods

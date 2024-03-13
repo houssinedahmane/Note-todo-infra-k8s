@@ -1,0 +1,20 @@
+additionalScrapeConfigs:
+  - job_name: blackbox
+    metrics_path: /probe
+    params:
+      module: [http_2xx]
+    static_configs:
+      # Add URLs as target parameter
+      - targets:
+        - http://backend-service:3001/api/todos
+        - http://front-end-service:3000
+
+    relabel_configs:
+    - source_labels: [__address__]
+      target_label: __param_target
+    - source_labels: [__param_target]
+      # Important!     
+      target_label: target
+      # Ensure blackbox-exporter is reachable from Prometheus
+    - target_label: __address__ 
+      replacement: prometheus-blackbox-exporter.monitoring:9115

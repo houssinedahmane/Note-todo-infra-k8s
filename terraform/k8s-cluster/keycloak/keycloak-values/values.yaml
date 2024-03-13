@@ -1,0 +1,35 @@
+auth:
+  createAdminUser: true
+  adminUser: admin
+  adminPassword: admin
+  managementUser: manager
+  managementPassword: manager
+proxyAddressForwarding: true
+postgresql:
+  enabled: true
+  auth:
+    postgresPassword: "admin"
+    username: bn_keycloak
+    password: admin
+    database: bitnami_keycloak
+    existingSecret: ""
+  architecture: standalone
+ 
+externalDatabase:
+  database: bitnami_keycloak
+  existingSecret: ''
+  existingSecretPasswordKey: ''
+  host: keycloak-bitnami-postgresql
+  password: admin
+  port: 5432
+  user: bn_keycloak
+service:
+  type: NodePort  # Change to NodePort
+  http:
+    enabled: true
+  ports:
+    http: 80
+    https: 443
+  nodePorts:
+    http: 30080  # Specify the desired NodePort for HTTP
+    https: 30443  # Specify the desired NodePort for HTTPS

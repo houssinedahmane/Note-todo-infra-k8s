@@ -1,0 +1,18 @@
+helm repo add [give-a-name] https://prometheus-community.github.io/helm-charts
+helm repo update 
+helm pull [give-a-name]/https://prometheus-community.github.io/helm-charts
+
+helm install [any_name] . -n [namespace]
+
+
+
+cat <<EOF | kubectl apply -f -
+apiVersion: v1
+kind: Secret
+metadata:
+  name: alertmanager-main
+  namespace: monitoring
+type: Opaque
+data:
+  alertmanager.yaml: Z2xvYmFsOgogIHJlc29sdmVfdGltZW91dDogNW0KcmVjZWl2ZXJzOgotIG5hbWU6IHByb21ldGhldXMtbXN0ZWFtcwogIHdlYmhvb2tfY29uZmlnczoKICAtIHVybDogImh0dHA6Ly9wcm9tZXRoZXVzLW1zdGVhbXM6MjAwMC9hbGVydG1hbmFnZXIiCiAgICBzZW5kX3Jlc29sdmVkOiB0cnVlCnJvdXRlOgogIGdyb3VwX2J5OgogIC0gam9iCiAgZ3JvdXBfaW50ZXJ2YWw6IDVtCiAgZ3JvdXBfd2FpdDogMzBzCiAgcmVjZWl2ZXI6IHByb21ldGhldXMtbXN0ZWFtcwogIHJlcGVhdF9pbnRlcnZhbDogMTJoCiAgcm91dGVzOgogIC0gbWF0Y2g6CiAgICAgIGFsZXJ0bmFtZTogV2F0Y2hkb2cKICAgIHJlY2VpdmVyOiBwcm9tZXRoZXVzLW1zdGVhbXMKCg==
+EOF

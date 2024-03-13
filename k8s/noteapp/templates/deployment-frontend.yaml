@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: noteapp-frontend
-        image: registry.gitlab.com/houssinedahmane/todo_app_with_k8s/noteapp-frontend-1.0.0
+        image: houssinedahmane/todo_app_with_k8s_frontend:1.0.024
         ports:
         - containerPort: 3000
         env:
