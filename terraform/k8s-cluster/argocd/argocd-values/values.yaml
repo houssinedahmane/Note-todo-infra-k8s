@@ -1,0 +1,17 @@
+server:
+  additionalApplications:
+   - name: cluster-config
+     namespace: argocd
+     project: default
+     source:
+       repoURL: https://github.com/houssinedahmane/Note-todo-infra-k8s
+       targetRevision: HEAD
+       path: /k8s/noteapp/
+       directory:
+         recurse: true
+     destination:
+       server: https://kubernetes.default.svc
+     syncPolicy:
+       automated:
+         prune: false
+         selfHeal: false

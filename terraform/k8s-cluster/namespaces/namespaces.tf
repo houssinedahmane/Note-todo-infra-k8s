@@ -10,3 +10,9 @@ resource "kubernetes_namespace" "apps" {
     name = var.namespace-2
   }
 }
+
+# resource "kubernetes_namespace" "argocd" {
+#   metadata {
+#     name = var.namespace-3
+#   }
+# }

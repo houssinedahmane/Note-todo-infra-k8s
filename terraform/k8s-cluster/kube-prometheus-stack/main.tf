@@ -8,8 +8,4 @@ resource "helm_release" "kube-prometheus" {
   values = [
     file("${path.module}/kube-values/test-values.yaml"),
   ]
-  # set {
-  #   name  = "grafana.grafana.ini.auth.generic_oauth.client_secret"
-  #   value = var.grafana_client_secret
-  # }
 }

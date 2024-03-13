@@ -11,3 +11,8 @@ variable "namespace-2" {
   type    = string
   default = "apps"
 }
+
+# variable "namespace-3" {
+#   type    = string
+#   default = "argocd"
+# }
