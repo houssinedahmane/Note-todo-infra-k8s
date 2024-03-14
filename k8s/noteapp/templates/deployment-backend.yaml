@@ -4,7 +4,7 @@ metadata:
   name:  {{ .Values.Deployment.backend.name }} #backend-deployment
   namespace: apps
   labels:
-    app:   {{ .Values.Deployment.backend.labels.app }} #noteapp-backend
+    app: noteapp-backend
 spec:
   replicas: {{ .Values.Deployment.backend.replicas }} #1
   selector:

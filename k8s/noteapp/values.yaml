@@ -1,8 +1,6 @@
 Deployment: 
   backend:
     name: backend-deployment
-    labels:
-      app: backend
     replicas: 1
     containers:
       name: noteapp-backend
