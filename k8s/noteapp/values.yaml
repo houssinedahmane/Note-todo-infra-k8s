@@ -1,7 +1,7 @@
-Deployment: 
+deployment: 
   backend:
     name: backend-deployment
-    replicas: 1
+    replicasCount: 1
     containers:
       name: noteapp-backend
       image:  "houssinedahmane/todo_app_with_k8s_backend"

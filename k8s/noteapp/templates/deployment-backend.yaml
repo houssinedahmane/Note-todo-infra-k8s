@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.Deployment.backend.name }}
+  name: {{ .Values.deployment.backend.name }}
   namespace: apps
   labels:
     app: noteapp-backend
 spec:
-  replicas: {{ .Values.Deployment.backend.replicas }}
+  replicas: {{ .Values.Deployment.backend.replicasCount }}
   selector:
     matchLabels:
-      app: {{ .Values.Deployment.backend.labels.app }}
+      app:  noteapp-backend
   template:
     metadata:
       labels:
-        app: {{ .Values.Deployment.backend.labels.app }}
+        app:  noteapp-backend
     spec:
       containers:
       - name: {{ .Values.Deployment.backend.containers.name }}
