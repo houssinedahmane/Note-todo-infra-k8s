@@ -1,14 +1,30 @@
-# Database settings
-database:
-  size: 50Gi
-  password: 'password'
-  persistence:
-    storageClass: 
-    nodeAffinity: 
-      required:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: kubernetes.io/hostname
-            operator: In
-            values:
-            - "docker-desktop"
+Deployment: 
+  backend:
+    name: backend-deployment
+    labels:
+      app: backend
+    replicas: 1
+    containers:
+      name: noteapp-backend
+      image:  "houssinedahmane/todo_app_with_k8s_backend"
+      tag: "1.0.024"
+
+
+
+
+
+
+# # Database settings
+# database:
+#   size: 50Gi
+#   password: 'password'
+#   persistence:
+#     storageClass: 
+#     nodeAffinity: 
+#       required:
+#         nodeSelectorTerms:
+#         - matchExpressions:
+#           - key: kubernetes.io/hostname
+#             operator: In
+#             values:
+#             - "docker-desktop"

@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: backend-deployment
+  name:  {{ .Values.Deployment.backend.name }} #backend-deployment
   namespace: apps
   labels:
-    app: noteapp-backend
+    app:   {{ .Values.Deployment.backend.labels.app }} #noteapp-backend
 spec:
-  replicas: 1
+  replicas: {{ .Values.Deployment.backend.replicas }} #1
   selector:
     matchLabels:
-      app: noteapp-backend
+      app:  {{ .Values.Deployment.backend.labels.app }}  #noteapp-backend
   template:
     metadata:
       labels:
-        app: noteapp-backend
+        app: {{ .Values.Deployment.backend.labels.app }}  #noteapp-backend
     spec:
       containers:
-      - name: noteapp-backend
-        image: houssinedahmane/todo_app_with_k8s_backend:1.0.024
+      - name: {{ .Values.Deployment.backend.containers.name }}  #noteapp-backend
+        image: "{{ .Values.Deployment.backend.containers.image }}:{{ .Values.Deployment.backend.containers.tag }}" #houssinedahmane/todo_app_with_k8s_backend:1.0.024
         ports:
         - name: http-web
           containerPort: 3001
