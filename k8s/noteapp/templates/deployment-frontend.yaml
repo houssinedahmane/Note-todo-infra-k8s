@@ -24,19 +24,3 @@ spec:
         - name: REACT_APP_API_URL
           value: http://192.168.49.2:30001/api
 
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: frontend-service
-  namespace: apps
-  labels:
-    app: noteapp-frontend
-spec:
-  selector:
-    app: noteapp-frontend
-  ports:
-  - protocol: "TCP"
-    port: 3000
-    targetPort: 3000
-  type: LoadBalancer
