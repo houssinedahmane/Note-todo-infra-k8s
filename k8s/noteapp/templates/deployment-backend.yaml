@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name:  {{ .Values.Deployment.backend.name }}
+  name: {{ .Values.Deployment.backend.name }}
   namespace: apps
   labels:
     app: noteapp-backend
@@ -9,7 +9,7 @@ spec:
   replicas: {{ .Values.Deployment.backend.replicas }}
   selector:
     matchLabels:
-      app:  {{ .Values.Deployment.backend.labels.app }} 
+      app: {{ .Values.Deployment.backend.labels.app }}
   template:
     metadata:
       labels:
@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: {{ .Values.Deployment.backend.containers.name }}
-        image: "{{ .Values.Deployment.backend.containers.image }}:{{ .Values.Deployment.backend.containers.tag }}" 
+        image: "{{ .Values.Deployment.backend.containers.image }}:{{ .Values.Deployment.backend.containers.tag }}"
         ports:
         - name: http-web
           containerPort: 3001
@@ -31,5 +31,4 @@ spec:
         - name: DB_USER
           value: postgres
         - name: DB_PASSWORD
-          value: password #{{ .Values.database.password }}
-
+          value: password 
