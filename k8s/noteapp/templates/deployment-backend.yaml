@@ -6,7 +6,7 @@ metadata:
   labels:
     app: noteapp-backend
 spec:
-  replicas: {{ .Values.Deployment.backend.replicasCount }}
+  replicas: {{ .Values.deployment.backend.replicas }}
   selector:
     matchLabels:
       app:  noteapp-backend
@@ -16,8 +16,8 @@ spec:
         app:  noteapp-backend
     spec:
       containers:
-      - name: {{ .Values.Deployment.backend.containers.name }}
-        image: "{{ .Values.Deployment.backend.containers.image }}:{{ .Values.Deployment.backend.containers.tag }}"
+      - name: {{ .Values.deployment.backend.containers.name }}
+        image: "{{ .Values.deployment.backend.containers.image }}:{{ .Values.deployment.backend.containers.tag }}"
         ports:
         - name: http-web
           containerPort: 3001
