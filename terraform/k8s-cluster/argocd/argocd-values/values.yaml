@@ -6,7 +6,7 @@ server:
      source:
        repoURL: https://github.com/houssinedahmane/Note-todo-infra-k8s
        targetRevision: HEAD
-       path: k8s/noteapp/templates/
+       path: k8s/noteapp/
        directory:
          recurse: true
      destination:
