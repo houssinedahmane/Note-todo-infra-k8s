@@ -6,6 +6,37 @@ deployment:
       name: noteapp-backend
       image:  "houssinedahmane/todo_app_with_k8s_backend"
       tag: "1.0.024"
+  frontend:
+    name: frontend-deployment
+    replicas: 1
+    containers:
+      name: noteapp-frontend
+      image:  "houssinedahmane/todo_app_with_k8s_frontend"
+      tag: "1.0.024"
+  db:
+    name: postgres
+    replicas: 1
+    containers:
+      name: postgres
+      image:  "postgres"
+      tag: "12"
+services:
+  backend:
+    name: backend-service
+    port: 3001
+    nodePort: 30001
+    targetPort: 3001
+    type: NodePort
+  frontend:
+    name: frontend-service
+    port: 3000
+    targetPort: 3000
+    type: LoadBalancer
+  db:
+    name: postgres-service
+    port: 5432
+    type: ClusterIP
+
 
 
 

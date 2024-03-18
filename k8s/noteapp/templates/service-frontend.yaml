@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: frontend-service
+  name: {{ .Values.services.frontend.name }}
   namespace: apps
   labels:
     app: noteapp-frontend
@@ -11,6 +11,6 @@ spec:
     app: noteapp-frontend
   ports:
   - protocol: "TCP"
-    port: 3000
-    targetPort: 3000
-  type: LoadBalancer
+    port: {{ .Values.services.backend.port }}
+    targetPort: {{ .Values.services.backend.targetPort }}
+  type: {{ .Values.services.backend.type }}

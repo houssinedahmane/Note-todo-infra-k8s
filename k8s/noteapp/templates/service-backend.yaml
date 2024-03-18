@@ -2,16 +2,16 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: backend-service
+  name: {{ .Values.services.backend.name }} 
   namespace: apps
   labels:
     app: noteapp-backend
 spec:
-  type: NodePort
+  type: {{ .Values.services.backend.type }}
   selector:
     app: noteapp-backend
   ports:
     - protocol: TCP
-      port: 3001
-      nodePort: 30001
-      targetPort: 3001
+      port: {{ .Values.services.backend.port }}
+      nodePort: {{ .Values.services.backend.nodePort }}
+      targetPort: {{ .Values.services.backend.targetPort }}
