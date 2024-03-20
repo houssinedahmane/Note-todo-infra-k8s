@@ -6,11 +6,12 @@ server:
      source:
        repoURL: https://github.com/houssinedahmane/Note-todo-infra-k8s
        targetRevision: HEAD
-       path: k8s/noteapp/
+       path: k8s/noteapp
        directory:
          recurse: true
      destination:
        server: https://kubernetes.default.svc
+       namespace: argocd
      syncPolicy:
        automated:
          prune: true
