@@ -2,12 +2,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ .Values.services.db.name }} 
+  name: postgres-service
   namespace: apps
 spec:
-  type: {{ .Values.services.db.type }} 
+  type: ClusterIP
   ports:
-    - port: {{ .Values.services.db.port }} 
+    - port: 5432
   selector:
     app: postgres
 
