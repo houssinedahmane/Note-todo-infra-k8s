@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: noteapp-backend
-        image: "houssinedahmane/todo_app_with_k8s_frontend:1.0.024"
+        image: "houssinedahmane/todo_app_with_k8s_backend:1.0.024"
         ports:
         - name: http-web
           containerPort: 3001
